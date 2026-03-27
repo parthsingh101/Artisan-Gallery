@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/admin
+Disallow: /checkout
+Disallow: /account
+Disallow: /cart
+
+Sitemap: https://artisan-gallery.vercel.app/sitemap.xml
