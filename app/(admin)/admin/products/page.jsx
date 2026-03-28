@@ -11,7 +11,8 @@ import {
   HiOutlineChevronLeft,
   HiOutlineChevronRight,
   HiOutlinePlus,
-  HiOutlineCube
+  HiOutlineCube,
+  HiOutlinePhotograph
 } from "react-icons/hi";
 import { toast } from "react-hot-toast";
 
