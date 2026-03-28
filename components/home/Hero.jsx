@@ -6,10 +6,14 @@ export default function Hero({ settings = {}, stats }) {
   const {
     heroTitle = "Original Art for Soulful Spaces",
     heroSubtitle = "Curated original paintings and sketches from world-renowned and emerging artists. Every piece is an investment in your legacy.",
-    heroImage,
+    heroImage: rawHeroImage,
     heroButtonText = "Explore Gallery",
     heroButtonLink = "/shop"
   } = settings;
+
+  // Use a reliable fallback if heroImage is missing or points to a local /uploads/ path
+  const defaultHeroImage = "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=1200";
+  const heroImage = (rawHeroImage && !rawHeroImage.startsWith("/uploads/")) ? rawHeroImage : defaultHeroImage;
 
   return (
     <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden bg-cream-50 dark:bg-charcoal-900 transition-colors duration-500">
