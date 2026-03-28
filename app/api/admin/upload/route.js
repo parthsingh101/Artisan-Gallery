@@ -60,9 +60,5 @@ export async function POST(req) {
   }
 }
 
-// Config to handle large file uploads
-export const config = {
-  api: {
-    bodyParser: false, // Disabling bodyParser for FormData
-  },
-};
+// Note: In Next.js App Router, FormData is handled natively by the runtime.
+// No bodyParser config needed - this is automatic for route handlers.
