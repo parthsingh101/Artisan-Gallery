@@ -18,5 +18,9 @@ export default withAuth(
   }
 );
 
-export const matcher = ["/admin/:path*", "/account/:path*", "/checkout", "/wishlist"];
-
+// Note: In middleware.js specifically, `export const config` with `matcher`
+// is the CORRECT pattern. This is NOT a route segment config — it is a
+// middleware-specific API that Next.js requires.
+export const config = {
+  matcher: ["/admin/:path*", "/account/:path*", "/checkout", "/wishlist"],
+};
