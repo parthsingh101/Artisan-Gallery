@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, Suspense } from "react";
 import Link from "next/link";
 import { HiOutlineChevronRight, HiOutlineFilter } from "react-icons/hi";
 import SearchInput from "@/components/ui/SearchInput";
@@ -76,11 +76,13 @@ export default function AdminOrdersPage() {
 
         {/* Filter row */}
         <div className="flex items-center gap-3 flex-wrap">
-          <SearchInput
-            paramName="search"
-            placeholder="Search by ID or email…"
-            className="w-64"
-          />
+          <Suspense fallback={<div className="w-64 h-10 bg-charcoal-100 dark:bg-charcoal-700 rounded-xl animate-pulse" />}>
+            <SearchInput
+              paramName="search"
+              placeholder="Search by ID or email…"
+              className="w-64"
+            />
+          </Suspense>
           <div className="flex items-center gap-2">
             <HiOutlineFilter className="w-4 h-4 text-charcoal-400" />
           <select
@@ -179,7 +181,9 @@ export default function AdminOrdersPage() {
       </div>
 
       {/* Pagination using shared component */}
-      <Pagination total={total} page={page} limit={LIMIT} />
+      <Suspense fallback={null}>
+        <Pagination total={total} page={page} limit={LIMIT} />
+      </Suspense>
     </div>
   );
 }
